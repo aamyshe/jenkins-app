@@ -73,8 +73,9 @@ android {
 
 }
 
-task chiji{1
-    print("大吉大利，晚上吃鸡！111111111111111111")
+
+task ceshi1{
+	print("孙恩龙，大吉大利，晚上吃烧鸡")
 }
 
 dependencies {
