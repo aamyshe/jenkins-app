@@ -78,7 +78,7 @@ task chiji{
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:26.0.0'
     testImplementation 'junit:junit:4.12'
 }
