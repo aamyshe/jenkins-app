@@ -73,12 +73,12 @@ android {
 
 }
 
-task chiji{
-    print("大吉大利，晚上吃鸡！")
+task chiji{1
+    print("大吉大利，晚上吃鸡！111111111111111111")
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:26.0.0'
-    testCompile'junit:junit:4.12'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:26.0.0'
+    testImplementation 'junit:junit:4.12'
 }
