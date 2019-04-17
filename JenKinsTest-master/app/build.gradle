@@ -1,0 +1,84 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "com.zlf.jenkinstest"
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 100
+        versionName "1.0.0"
+    }
+    /**
+     * gradle3.0修改apk包名
+     */
+    android.applicationVariants.all {
+        variant ->
+            variant.outputs.all {
+                //这里修改apk文件名
+                outputFileName = "${variant.name}-v${variant.versionName}.apk"
+            }
+    }
+/*
+    android.applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            def outputFile = output.outputFile
+            if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                //这里修改apk文件名
+                def fileName = "指定的文件名.apk"
+                output.outputFile = new File(outputFile.parent, fileName)
+            }
+        }
+    }*/
+
+    signingConfigs {
+        release {
+            storeFile file('ssit.jks')
+            storePassword "sevenstar"
+            keyAlias "sevenstarclient"
+            keyPassword "sevenstarclient"
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+        debug {
+            storeFile file('ssit.jks')
+            storePassword "sevenstar"
+            keyAlias "sevenstarclient"
+            keyPassword "sevenstarclient"
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.release
+            proguardFile 'proguard-rules.pro'
+
+
+        }
+        debug {
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+            proguardFile 'proguard-rules.pro'
+
+        }
+    }
+    lintOptions {
+        abortOnError false
+    }
+    aaptOptions {
+        cruncherEnabled = false
+    }
+
+}
+
+task chiji{
+    print("大吉大利，晚上吃鸡！")
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:26.0.0'
+    testImplementation 'junit:junit:4.12'
+}
